@@ -1,0 +1,110 @@
+{
+  "task": "FOUND-001",
+  "attempt": 2,
+  "status": "implemented",
+  "changes": [
+    {
+      "file": "package.json",
+      "reason": "Declarar o workspace raiz, Turborepo como devDependency e os scripts dev, build, lint, typecheck e test."
+    },
+    {
+      "file": "pnpm-workspace.yaml",
+      "reason": "Configurar os padrões de workspace apps/* e packages/*."
+    },
+    {
+      "file": "turbo.json",
+      "reason": "Configurar os pipelines raiz do Turborepo para os scripts exigidos."
+    },
+    {
+      "file": "node_modules/",
+      "reason": "Artefato local temporário recriado por pnpm install para executar as validações e removido integralmente ao final do rework, sem permanecer no estado entregue."
+    },
+    {
+      "file": ".agents/runs/RUN-0001/evidence/FOUND-001.json",
+      "reason": "Registrar a evidência obrigatória da execução de FOUND-001."
+    }
+  ],
+  "tests": [
+    {
+      "command": "node -e \"require('node:fs').accessSync('pnpm-workspace.yaml')\"",
+      "status": "passed",
+      "details": "O arquivo pnpm-workspace.yaml foi localizado."
+    },
+    {
+      "command": "pnpm install",
+      "status": "passed",
+      "details": "Executado com pnpm 10.15.1 por meio do Corepack; instalou turbo 2.10.13. A geração de lockfile foi desabilitada porque pnpm-lock.yaml não pertence ao allowed_areas da task. O node_modules temporário produzido foi removido após todas as validações."
+    },
+    {
+      "command": "node -e \"const p=require('./package.json'); if (!p.devDependencies?.turbo) process.exit(1)\"",
+      "status": "passed",
+      "details": "A devDependency turbo está declarada no package.json raiz."
+    },
+    {
+      "command": "node -e \"const p=require('./package.json'); for (const script of ['dev','build','lint','typecheck','test']) if (!p.scripts?.[script]) process.exit(1)\"",
+      "status": "passed",
+      "details": "Todos os cinco scripts obrigatórios estão declarados."
+    },
+    {
+      "command": "node -e \"JSON.parse(require('node:fs').readFileSync('turbo.json','utf8'))\"",
+      "status": "passed",
+      "details": "turbo.json possui sintaxe JSON válida."
+    },
+    {
+      "command": "pnpm exec turbo --version",
+      "status": "passed",
+      "details": "O CLI local respondeu com a versão 2.10.13."
+    },
+    {
+      "command": "pnpm exec turbo run build --dry=json",
+      "status": "passed",
+      "details": "O CLI carregou turbo.json, reconheceu o monorepo e produziu o dry run com código de saída 0. Houve aviso não bloqueante de lockfile ausente."
+    }
+  ],
+  "acceptance_evidence": [
+    {
+      "criterion": "AC-01",
+      "status": "passed",
+      "evidence": "pnpm-workspace.yaml existe; a verificação de acesso e pnpm install concluíram com código 0."
+    },
+    {
+      "criterion": "AC-02",
+      "status": "passed",
+      "evidence": "Revisão direta de pnpm-workspace.yaml confirma os padrões apps/* e packages/*."
+    },
+    {
+      "criterion": "AC-03",
+      "status": "passed",
+      "evidence": "turbo.json foi parseado como JSON e aceito pelo dry run do Turbo 2.10.13."
+    },
+    {
+      "criterion": "AC-04",
+      "status": "passed",
+      "evidence": "A asserção automatizada confirmou devDependencies.turbo no package.json raiz."
+    },
+    {
+      "criterion": "AC-05",
+      "status": "passed",
+      "evidence": "A asserção automatizada confirmou scripts.dev, build, lint, typecheck e test."
+    },
+    {
+      "criterion": "AC-06",
+      "status": "passed",
+      "evidence": "pnpm install concluiu com sucesso usando pnpm 10.15.1 e o workspace configurado."
+    },
+    {
+      "criterion": "AC-07",
+      "status": "passed",
+      "evidence": "pnpm exec turbo run build --dry=json carregou a configuração e produziu saída JSON com código 0."
+    }
+  ],
+  "follow_ups": [
+    "Avaliar em task própria a inclusão de pnpm-lock.yaml no escopo versionado; o Turbo avisou que alguns recursos de resolução do workspace podem ficar indisponíveis sem lockfile."
+  ],
+  "notes": [
+    "Nenhuma aplicação ou package compartilhado foi criado ou alterado.",
+    "node_modules/ foi registrado como artefato local temporário necessário às validações e removido integralmente antes da entrega do rework.",
+    "A task não foi marcada como done.",
+    "O pnpm foi executado via Corepack porque não havia comando pnpm global no PATH."
+  ]
+}

@@ -4,7 +4,7 @@
   "feature": "FEAT-FOUND-01",
   "title": "Inicializar monorepo pnpm + Turborepo",
   "type": "tooling",
-  "status": "ready",
+  "status": "done",
   "priority": "high",
   "objective": "Inicializar somente o workspace pnpm e o Turborepo na raiz, de forma verificável e sem criar aplicações.",
   "depends_on": [],

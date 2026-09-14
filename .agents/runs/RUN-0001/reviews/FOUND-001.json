@@ -1,0 +1,50 @@
+{
+  "task": "FOUND-001",
+  "attempt": 1,
+  "decision": "rejected",
+  "criteria": [
+    {
+      "id": "AC-01",
+      "status": "passed",
+      "reason": "pnpm-workspace.yaml existe, possui estrutura YAML compatível com pnpm e a instalação registrada na evidência produziu o workspace local em node_modules."
+    },
+    {
+      "id": "AC-02",
+      "status": "passed",
+      "reason": "A revisão direta de pnpm-workspace.yaml confirmou a declaração explícita dos padrões apps/* e packages/*."
+    },
+    {
+      "id": "AC-03",
+      "status": "passed",
+      "reason": "turbo.json existe, é JSON válido e foi carregado com sucesso pelo Turbo local 2.10.13 no dry run revisado."
+    },
+    {
+      "id": "AC-04",
+      "status": "passed",
+      "reason": "O package.json raiz declara turbo em devDependencies com a faixa ^2.5.6."
+    },
+    {
+      "id": "AC-05",
+      "status": "passed",
+      "reason": "O package.json raiz contém os scripts dev, build, lint, typecheck e test, todos delegados ao Turbo."
+    },
+    {
+      "id": "AC-06",
+      "status": "passed",
+      "reason": "A evidência registra pnpm install com saída bem-sucedida usando pnpm 10.15.1; o estado real contém a instalação pnpm e turbo 2.10.13 em node_modules, corroborando a execução. A geração desabilitada de pnpm-lock.yaml não viola este critério nem o escopo permitido."
+    },
+    {
+      "id": "AC-07",
+      "status": "passed",
+      "reason": "O CLI local do Turbo 2.10.13 carregou turbo.json e produziu o dry run JSON do pipeline build com sucesso. O aviso de lockfile ausente não impediu o carregamento nem a saída exigida."
+    }
+  ],
+  "issues": [
+    {
+      "severity": "blocking",
+      "file": "node_modules/",
+      "description": "Há uma árvore node_modules inteira não rastreada no estado atual do repositório. Ela está fora das áreas permitidas pela task, que se limitam a package.json, pnpm-workspace.yaml e turbo.json, e sua criação é corroborada pelo pnpm install declarado pelo Executor. A evidência também omite essa alteração em changes e afirma que nenhuma aplicação ou package foi alterado sem registrar este artefato fora de escopo. A implementação deve ser entregue sem essa alteração residual fora do escopo."
+    }
+  ],
+  "summary": "Todos os acceptance criteria bloqueantes foram atendidos individualmente. A ausência de pnpm-lock.yaml não viola FOUND-001, pois o arquivo não é exigido pelos critérios e não está em allowed_areas; o aviso do Turbo é não bloqueante para o dry run requerido. A decisão é rejected porque o estado atual inclui node_modules/ não rastreado e fora do escopo, alteração material não declarada pela evidência."
+}
