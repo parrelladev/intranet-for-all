@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-04",
+  "title": "Systems",
+  "status": "planned",
+  "objective": "Implementar gestão e consumo de sistemas corporativos.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

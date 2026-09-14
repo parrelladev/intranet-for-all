@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-11",
+  "title": "Hardening",
+  "status": "planned",
+  "objective": "Consolidar testes, auditoria, segurança e observabilidade.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

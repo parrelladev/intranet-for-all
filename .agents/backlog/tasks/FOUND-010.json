@@ -1,0 +1,85 @@
+{
+  "id": "FOUND-010",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-03",
+  "title": "Configurar CI inicial",
+  "type": "tooling",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Configurar CI inicial de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-009"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-010.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "root",
+      "api",
+      "cms",
+      "intranet"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Criar pipeline para install, lint, typecheck, test e build"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "CI usa lockfile",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "CI falha quando validação falha",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-03",
+      "description": "Pipeline não depende de segredo desnecessário",
+      "verification": "review",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não configurar deploy"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}

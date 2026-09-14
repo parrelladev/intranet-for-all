@@ -1,0 +1,87 @@
+{
+  "id": "FOUND-014",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-04",
+  "title": "Documentar setup local",
+  "type": "documentation",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Documentar setup local de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-006",
+    "FOUND-008",
+    "FOUND-009",
+    "FOUND-011",
+    "FOUND-012",
+    "FOUND-013"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-014.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "root",
+      "api",
+      "cms",
+      "intranet"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Documentar pré-requisitos",
+    "Documentar instalação",
+    "Documentar como subir banco e apps",
+    "Documentar validações"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "Pessoa nova consegue seguir README",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "Comandos documentados correspondem aos scripts reais",
+      "verification": "automated",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não documentar deploy ainda"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}

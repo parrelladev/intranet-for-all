@@ -1,0 +1,77 @@
+{
+  "id": "FOUND-013",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-04",
+  "title": "Configurar logging e tratamento global de erros",
+  "type": "backend",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Configurar logging e tratamento global de erros de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-002"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-013.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "api"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Configurar logger base",
+    "Configurar filtro/tratamento global de erro"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "Erros inesperados são logados",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "Resposta não expõe stack em produção",
+      "verification": "review",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não adicionar plataforma externa de observabilidade"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}

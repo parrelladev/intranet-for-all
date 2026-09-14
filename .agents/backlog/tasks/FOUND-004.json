@@ -1,0 +1,81 @@
+{
+  "id": "FOUND-004",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-01",
+  "title": "Configurar TypeScript compartilhado",
+  "type": "tooling",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Configurar TypeScript compartilhado de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-002",
+    "FOUND-003"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-004.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "root",
+      "api",
+      "cms",
+      "intranet"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Criar configuração TypeScript base",
+    "Fazer apps herdarem configuração adequada"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "Typecheck pode ser executado na raiz",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "Apps compilam com configuração compartilhada",
+      "verification": "automated",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não flexibilizar strict sem justificativa"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}

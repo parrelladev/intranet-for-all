@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "execution.schema.json",
+  "title": "ExecutionEvidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "attempt",
+    "status",
+    "changes",
+    "tests",
+    "acceptance_evidence",
+    "follow_ups",
+    "notes"
+  ],
+  "properties": {
+    "task": {
+      "type": "string"
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "implemented",
+        "validation_failed",
+        "blocked"
+      ]
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "reason"
+        ],
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command",
+          "status"
+        ],
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "not_run"
+            ]
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "acceptance_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "criterion",
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "criterion": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "not_verified"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "follow_ups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

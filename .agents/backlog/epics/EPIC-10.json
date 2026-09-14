@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-10",
+  "title": "Notifications",
+  "status": "planned",
+  "objective": "Implementar notificações e estado por usuário.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

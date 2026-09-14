@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-09",
+  "title": "Users",
+  "status": "planned",
+  "objective": "Implementar gestão administrativa de usuários e perfis.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

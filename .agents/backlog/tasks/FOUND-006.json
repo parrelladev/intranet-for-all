@@ -1,0 +1,75 @@
+{
+  "id": "FOUND-006",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-02",
+  "title": "Configurar PostgreSQL local",
+  "type": "database",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Configurar PostgreSQL local de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-001"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-006.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "api"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Adicionar serviço PostgreSQL ao compose",
+    "Documentar credenciais apenas via env"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "docker compose inicia PostgreSQL",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "Banco possui healthcheck",
+      "verification": "automated",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não criar tabelas de domínio"
+  ],
+  "validation": {
+    "commands": [
+      "docker compose config",
+      "docker compose up -d postgres"
+    ]
+  }
+}

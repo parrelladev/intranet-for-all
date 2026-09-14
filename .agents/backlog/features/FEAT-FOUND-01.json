@@ -1,0 +1,16 @@
+{
+  "id": "FEAT-FOUND-01",
+  "epic": "EPIC-00",
+  "title": "Workspace Foundation",
+  "objective": "Estabelecer a estrutura compartilhada do workspace e as configurações básicas do monorepo.",
+  "status": "planned",
+  "business_rules": [],
+  "acceptance_criteria": [],
+  "tasks": [
+    "FOUND-001",
+    "FOUND-002",
+    "FOUND-003",
+    "FOUND-004",
+    "FOUND-005"
+  ]
+}

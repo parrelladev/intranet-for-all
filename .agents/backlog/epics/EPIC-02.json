@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-02",
+  "title": "Authentication & Authorization",
+  "status": "planned",
+  "objective": "Implementar autenticação e RBAC básico.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

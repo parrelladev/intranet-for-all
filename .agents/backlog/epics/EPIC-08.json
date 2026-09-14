@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-08",
+  "title": "Banners",
+  "status": "planned",
+  "objective": "Implementar banners e agendamento.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

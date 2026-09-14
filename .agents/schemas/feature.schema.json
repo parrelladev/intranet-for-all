@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "feature.schema.json",
+  "title": "Feature",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "epic",
+    "title",
+    "objective",
+    "status",
+    "business_rules",
+    "acceptance_criteria",
+    "tasks"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^FEAT-[A-Z0-9-]+$"
+    },
+    "epic": {
+      "type": "string",
+      "pattern": "^EPIC-[A-Z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 10
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "ready",
+        "in_progress",
+        "done",
+        "blocked"
+      ]
+    },
+    "business_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-01",
+  "title": "Design System",
+  "status": "planned",
+  "objective": "Criar os componentes e padrões visuais compartilhados.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

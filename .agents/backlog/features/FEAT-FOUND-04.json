@@ -1,0 +1,15 @@
+{
+  "id": "FEAT-FOUND-04",
+  "epic": "EPIC-00",
+  "title": "Runtime Foundation",
+  "objective": "Estabelecer os comportamentos mínimos de runtime e a documentação operacional local.",
+  "status": "planned",
+  "business_rules": [],
+  "acceptance_criteria": [],
+  "tasks": [
+    "FOUND-011",
+    "FOUND-012",
+    "FOUND-013",
+    "FOUND-014"
+  ]
+}

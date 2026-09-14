@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "state.schema.json",
+  "title": "RunState",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "status",
+    "current_task",
+    "attempt",
+    "max_attempts",
+    "started_at",
+    "updated_at"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "running",
+        "waiting_review",
+        "blocked",
+        "completed",
+        "failed"
+      ]
+    },
+    "current_task": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_review": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

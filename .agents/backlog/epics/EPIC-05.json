@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-05",
+  "title": "News",
+  "status": "planned",
+  "objective": "Implementar criação, publicação e consumo de notícias.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

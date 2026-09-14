@@ -1,0 +1,17 @@
+{
+  "id": "EPIC-00",
+  "title": "Foundation",
+  "status": "ready",
+  "objective": "Criar a fundação técnica e operacional do monorepo.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": [
+    "FEAT-FOUND-01",
+    "FEAT-FOUND-02",
+    "FEAT-FOUND-03",
+    "FEAT-FOUND-04"
+  ]
+}

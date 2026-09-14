@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-03",
+  "title": "Categories",
+  "status": "planned",
+  "objective": "Implementar categorias reutilizadas pelo produto.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-07",
+  "title": "Home",
+  "status": "planned",
+  "objective": "Implementar composição editorial da home.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

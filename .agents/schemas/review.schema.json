@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "review.schema.json",
+  "title": "Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "attempt",
+    "decision",
+    "criteria",
+    "issues",
+    "summary"
+  ],
+  "properties": {
+    "task": {
+      "type": "string"
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "decision": {
+      "enum": [
+        "approved",
+        "rejected",
+        "blocked"
+      ]
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "reason"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "not_verifiable"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "description"
+        ],
+        "properties": {
+          "severity": {
+            "enum": [
+              "blocking",
+              "major",
+              "minor"
+            ]
+          },
+          "file": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "FEAT-FOUND-02",
+  "epic": "EPIC-00",
+  "title": "Local Infrastructure",
+  "objective": "Estabelecer a infraestrutura local necessária ao desenvolvimento das aplicações.",
+  "status": "planned",
+  "business_rules": [],
+  "acceptance_criteria": [],
+  "tasks": [
+    "FOUND-006",
+    "FOUND-007",
+    "FOUND-008"
+  ]
+}

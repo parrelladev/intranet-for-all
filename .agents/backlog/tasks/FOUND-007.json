@@ -1,0 +1,79 @@
+{
+  "id": "FOUND-007",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-02",
+  "title": "Configurar Prisma na API",
+  "type": "database",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Configurar Prisma na API de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-002",
+    "FOUND-006"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-007.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "api"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Adicionar Prisma na API",
+    "Criar schema inicial",
+    "Configurar DATABASE_URL"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "Prisma conecta ao PostgreSQL",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "Comandos generate e migrate estão disponíveis",
+      "verification": "review",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não modelar entidades de negócio ainda"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}

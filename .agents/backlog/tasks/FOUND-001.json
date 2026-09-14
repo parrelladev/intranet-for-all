@@ -1,0 +1,106 @@
+{
+  "id": "FOUND-001",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-01",
+  "title": "Inicializar monorepo pnpm + Turborepo",
+  "type": "tooling",
+  "status": "ready",
+  "priority": "high",
+  "objective": "Inicializar somente o workspace pnpm e o Turborepo na raiz, de forma verificável e sem criar aplicações.",
+  "depends_on": [],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-001.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "root"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json"
+    ]
+  },
+  "requirements": [
+    "Configurar o pnpm workspace para contemplar apps/* e packages/*",
+    "Configurar o Turborepo com uma configuração válida para a versão instalada",
+    "Declarar Turborepo no package.json raiz como dependência de desenvolvimento",
+    "Criar no package.json raiz os scripts dev, build, lint, typecheck e test"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "pnpm-workspace.yaml existe e sua sintaxe é aceita pelo pnpm durante pnpm install",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "pnpm-workspace.yaml declara explicitamente apps/* e packages/*; verificar por review porque esta etapa ainda não possui um validador YAML independente que assegure semanticamente os dois padrões",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-03",
+      "description": "turbo.json existe e o CLI do Turbo instalado consegue carregá-lo ao gerar um dry run",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-04",
+      "description": "O package.json raiz declara turbo em devDependencies",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-05",
+      "description": "O package.json raiz possui os scripts dev, build, lint, typecheck e test",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-06",
+      "description": "pnpm install conclui com sucesso usando a configuração do workspace",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-07",
+      "description": "O CLI local do Turbo consegue carregar turbo.json e produzir o dry run do pipeline build",
+      "verification": "automated",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não criar aplicações",
+    "Não criar packages compartilhados",
+    "Não implementar funcionalidades de produto"
+  ],
+  "validation": {
+    "commands": [
+      "node -e \"require('node:fs').accessSync('pnpm-workspace.yaml')\"",
+      "pnpm install",
+      "node -e \"const p=require('./package.json'); if (!p.devDependencies?.turbo) process.exit(1)\"",
+      "node -e \"const p=require('./package.json'); for (const script of ['dev','build','lint','typecheck','test']) if (!p.scripts?.[script]) process.exit(1)\"",
+      "node -e \"JSON.parse(require('node:fs').readFileSync('turbo.json','utf8'))\"",
+      "pnpm exec turbo --version",
+      "pnpm exec turbo run build --dry=json"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "EPIC-06",
+  "title": "Institutional Pages",
+  "status": "planned",
+  "objective": "Implementar páginas institucionais gerenciáveis.",
+  "references": [
+    "docs/PRODUCT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md"
+  ],
+  "features": []
+}

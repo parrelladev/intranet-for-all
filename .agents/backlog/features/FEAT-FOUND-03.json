@@ -1,0 +1,13 @@
+{
+  "id": "FEAT-FOUND-03",
+  "epic": "EPIC-00",
+  "title": "Quality Pipeline",
+  "objective": "Estabelecer validações padronizadas e sua execução contínua no repositório.",
+  "status": "planned",
+  "business_rules": [],
+  "acceptance_criteria": [],
+  "tasks": [
+    "FOUND-009",
+    "FOUND-010"
+  ]
+}

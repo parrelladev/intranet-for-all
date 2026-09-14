@@ -1,0 +1,94 @@
+{
+  "id": "FOUND-009",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-03",
+  "title": "Padronizar scripts de validação",
+  "type": "tooling",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Padronizar scripts de validação de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-004",
+    "FOUND-005",
+    "FOUND-007"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-009.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "root",
+      "api",
+      "cms",
+      "intranet"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Garantir scripts lint, typecheck, test e build",
+    "Executar via raiz"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "pnpm lint executa",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "pnpm typecheck executa",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-03",
+      "description": "pnpm test executa",
+      "verification": "automated",
+      "blocking": true
+    },
+    {
+      "id": "AC-04",
+      "description": "pnpm build executa",
+      "verification": "automated",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não ignorar falhas com || true"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}

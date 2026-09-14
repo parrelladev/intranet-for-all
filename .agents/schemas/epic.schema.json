@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "epic.schema.json",
+  "title": "Epic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "status",
+    "objective",
+    "features"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EPIC-[A-Z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "ready",
+        "in_progress",
+        "done",
+        "blocked"
+      ]
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 10
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

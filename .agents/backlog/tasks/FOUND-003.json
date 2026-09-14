@@ -1,0 +1,85 @@
+{
+  "id": "FOUND-003",
+  "epic": "EPIC-00",
+  "feature": "FEAT-FOUND-01",
+  "title": "Criar packages compartilhados",
+  "type": "tooling",
+  "status": "planned",
+  "priority": "high",
+  "objective": "Criar packages compartilhados de forma verificável e sem ampliar o escopo do Foundation.",
+  "depends_on": [
+    "FOUND-001"
+  ],
+  "references": {
+    "screens": [],
+    "docs": [
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "api": []
+  },
+  "context": {
+    "required": [
+      "AGENTS.md",
+      ".agents/backlog/tasks/FOUND-003.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DECISIONS.md"
+    ],
+    "optional": [
+      "docs/PRODUCT.md"
+    ]
+  },
+  "scope": {
+    "apps": [
+      "root",
+      "api",
+      "cms",
+      "intranet"
+    ],
+    "allowed_areas": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "apps/",
+      "packages/",
+      "docker/",
+      "compose.yml",
+      "README.md",
+      ".github/"
+    ]
+  },
+  "requirements": [
+    "Criar ui, types, validation, config e eslint-config"
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "description": "Packages declarados no workspace",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-02",
+      "description": "Packages possuem package.json mínimo",
+      "verification": "review",
+      "blocking": true
+    },
+    {
+      "id": "AC-03",
+      "description": "Nenhum package contém regra de negócio",
+      "verification": "review",
+      "blocking": true
+    }
+  ],
+  "non_goals": [
+    "Não implementar componentes finais"
+  ],
+  "validation": {
+    "commands": [
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm test",
+      "pnpm build"
+    ]
+  }
+}
