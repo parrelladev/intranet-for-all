@@ -39,7 +39,20 @@ e salve:
 
 `evidence/FOUND-001.json`
 
-## 5. Abra uma nova sessão como Reviewer
+## 5. Documente a implementação
+
+Depois que a implementação for concluída, faça uma etapa própria para atualizar
+a documentação afetada pela task. Consulte as referências da task e mantenha
+README, instruções de setup, decisões e documentação técnica alinhados ao
+comportamento entregue. Altere somente arquivos permitidos pelo escopo da task;
+se a documentação necessária estiver fora dele, registre um `follow_up` para o
+Planner em vez de ampliar o escopo.
+
+Registre os arquivos e a razão das mudanças na evidência. Se não houver
+documentação afetada, registre essa avaliação e a justificativa na evidência.
+Apresente as mudanças documentais para aprovação antes de prosseguir.
+
+## 6. Abra uma nova sessão como Reviewer
 
 Peça:
 
@@ -48,14 +61,14 @@ Peça:
 > Não altere código.
 > Retorne review compatível com review.schema.json.
 
-## 6. Se aprovado
+## 7. Se aprovado
 
 - salve o review;
 - marque FOUND-001 como `done`;
 - escolha tasks cujas dependências agora estejam atendidas;
 - o Planner pode marcar a próxima como `ready`.
 
-## 7. Se reprovado
+## 8. Se reprovado
 
 - marque a task como `rework`;
 - aumente `attempt`;

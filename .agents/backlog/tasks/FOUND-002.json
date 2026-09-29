@@ -4,7 +4,7 @@
   "feature": "FEAT-FOUND-01",
   "title": "Criar apps api, cms e intranet",
   "type": "tooling",
-  "status": "planned",
+  "status": "ready",
   "priority": "high",
   "objective": "Criar apps api, cms e intranet de forma verificável e sem ampliar o escopo do Foundation.",
   "depends_on": [
@@ -43,6 +43,7 @@
       "apps/",
       "packages/",
       "docker/",
+      "pnpm-lock.yaml",
       "compose.yml",
       "README.md",
       ".github/"
@@ -56,19 +57,19 @@
   "acceptance_criteria": [
     {
       "id": "AC-01",
-      "description": "As três aplicações existem",
+      "description": "apps/api, apps/cms e apps/intranet existem como workspaces pnpm independentes e declaram respectivamente NestJS, Next.js e Next.js como framework principal",
       "verification": "automated",
       "blocking": true
     },
     {
       "id": "AC-02",
-      "description": "Cada aplicação inicia isoladamente",
+      "description": "O script dev de cada aplicação inicia sua aplicação isoladamente via pnpm --filter api dev, pnpm --filter cms dev e pnpm --filter intranet dev, com evidência de inicialização pronta em cada caso",
       "verification": "automated",
       "blocking": true
     },
     {
       "id": "AC-03",
-      "description": "Os nomes dos apps são api, cms e intranet",
+      "description": "Os nomes dos pacotes são api, cms e intranet e cada um pode ser selecionado individualmente pelo filtro do pnpm",
       "verification": "review",
       "blocking": true
     }
@@ -78,10 +79,13 @@
   ],
   "validation": {
     "commands": [
-      "pnpm lint",
-      "pnpm typecheck",
-      "pnpm test",
-      "pnpm build"
+    "pnpm lint",
+    "pnpm typecheck",
+    "pnpm test",
+    "pnpm build",
+    "pnpm --filter api dev",
+    "pnpm --filter cms dev",
+    "pnpm --filter intranet dev"
     ]
   }
 }

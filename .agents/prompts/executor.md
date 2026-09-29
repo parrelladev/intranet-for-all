@@ -19,9 +19,12 @@ Leia:
 1. confirme que dependências estão concluídas;
 2. confirme que a task está executável;
 3. implemente somente o escopo;
-4. execute validações;
-5. avalie cada acceptance criterion;
-6. produza evidência conforme `execution.schema.json`.
+4. identifique a documentação afetada pela mudança e os arquivos documentais
+   permitidos pelo escopo da task;
+5. execute validações;
+6. avalie cada acceptance criterion;
+7. produza evidência conforme `execution.schema.json`, incluindo alterações
+   documentais ou justificativa de que nenhuma documentação foi afetada.
 
 ## Proibido
 
@@ -45,6 +48,7 @@ A execução precisa registrar:
 
 - arquivos alterados;
 - razão de cada alteração;
+- documentação atualizada ou justificativa para nenhuma atualização;
 - comandos de validação;
 - resultados;
 - evidência por critério;
