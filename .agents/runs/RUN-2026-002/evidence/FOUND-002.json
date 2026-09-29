@@ -7,6 +7,7 @@
     { "file": "apps/cms/", "reason": "Criado scaffold Next.js independente com App Router, página inicial e ferramentas próprias." },
     { "file": "apps/intranet/", "reason": "Criado scaffold Next.js independente com App Router, página inicial e ferramentas próprias." },
     { "file": "pnpm-lock.yaml", "reason": "Lockfile criado para registrar e reproduzir as dependências dos quatro workspaces." },
+    { "file": "README.md", "reason": "Documentadas instalação, portas, inicialização individual ou conjunta, validações e fluxo de tasks." },
     { "file": ".agents/runs/RUN-2026-002/", "reason": "Registrado estado e evidência da execução conforme o fluxo do repositório." }
   ],
   "tests": [
@@ -17,7 +18,8 @@
     { "command": "corepack pnpm build", "status": "passed", "details": "Nest compilou a API e Next gerou os builds do CMS e da Intranet; 3 tarefas passaram." },
     { "command": "corepack pnpm --filter api dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3001 com o conteúdo API pronta." },
     { "command": "corepack pnpm --filter cms dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3000 com o título CMS Corporativo." },
-    { "command": "corepack pnpm --filter intranet dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3002 com o título Intranet Corporativa." }
+    { "command": "corepack pnpm --filter intranet dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3002 com o título Intranet Corporativa." },
+    { "command": "Checagem de comandos e manifests documentados no README.md", "status": "passed", "details": "Os scripts dev da raiz e de cada workspace correspondem aos comandos e portas indicados no README." }
   ],
   "acceptance_evidence": [
     { "criterion": "AC-01", "status": "passed", "evidence": "Os manifestos apps/api/package.json, apps/cms/package.json e apps/intranet/package.json declaram os nomes api, cms e intranet e respectivamente @nestjs/core, next e next como frameworks. pnpm install reconheceu os quatro workspaces." },
@@ -32,6 +34,6 @@
     "Os scripts test informam que ainda não existem testes configurados, sem simular cobertura automatizada.",
     "O Next 16 gerou AGENTS.md e CLAUDE.md nos dois apps Next durante dev, com instruções que deverão ser consideradas em alterações futuras.",
     "node_modules, caches e saídas de build foram removidos após as validações; pnpm-lock.yaml foi mantido.",
-    "Nenhuma documentação de produto foi alterada nesta etapa; a etapa documental aguarda aprovação da implementação."
+    "README.md atualizado na etapa documental após aprovação da implementação; setup e comandos conferidos com os manifestos e validações concluídas."
   ]
 }
