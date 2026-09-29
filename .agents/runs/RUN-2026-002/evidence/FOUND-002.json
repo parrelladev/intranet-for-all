@@ -1,0 +1,37 @@
+{
+  "task": "FOUND-002",
+  "attempt": 1,
+  "status": "implemented",
+  "changes": [
+    { "file": "apps/api/", "reason": "Criado scaffold NestJS com servidor inicial, configuração, scripts e dependências próprias." },
+    { "file": "apps/cms/", "reason": "Criado scaffold Next.js independente com App Router, página inicial e ferramentas próprias." },
+    { "file": "apps/intranet/", "reason": "Criado scaffold Next.js independente com App Router, página inicial e ferramentas próprias." },
+    { "file": "pnpm-lock.yaml", "reason": "Lockfile criado para registrar e reproduzir as dependências dos quatro workspaces." },
+    { "file": ".agents/runs/RUN-2026-002/", "reason": "Registrado estado e evidência da execução conforme o fluxo do repositório." }
+  ],
+  "tests": [
+    { "command": "corepack pnpm install", "status": "passed", "details": "Instalou pnpm 10.15.1 e dependências nos quatro workspaces, gerando pnpm-lock.yaml." },
+    { "command": "corepack pnpm lint", "status": "passed", "details": "Turbo executou ESLint em api, cms e intranet; 3 tarefas passaram." },
+    { "command": "corepack pnpm typecheck", "status": "passed", "details": "TypeScript verificou os três aplicativos; 3 tarefas passaram, inclusive após os ajustes do Next no tsconfig." },
+    { "command": "corepack pnpm test", "status": "passed", "details": "Os scripts de teste dos três workspaces concluíram; nenhum teste automatizado está configurado nesta task." },
+    { "command": "corepack pnpm build", "status": "passed", "details": "Nest compilou a API e Next gerou os builds do CMS e da Intranet; 3 tarefas passaram." },
+    { "command": "corepack pnpm --filter api dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3001 com o conteúdo API pronta." },
+    { "command": "corepack pnpm --filter cms dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3000 com o título CMS Corporativo." },
+    { "command": "corepack pnpm --filter intranet dev", "status": "passed", "details": "Servidor isolado respondeu HTTP 200 em http://localhost:3002 com o título Intranet Corporativa." }
+  ],
+  "acceptance_evidence": [
+    { "criterion": "AC-01", "status": "passed", "evidence": "Os manifestos apps/api/package.json, apps/cms/package.json e apps/intranet/package.json declaram os nomes api, cms e intranet e respectivamente @nestjs/core, next e next como frameworks. pnpm install reconheceu os quatro workspaces." },
+    { "criterion": "AC-02", "status": "passed", "evidence": "Cada comando filtrado foi iniciado sozinho e respondeu HTTP 200 na porta configurada: API 3001, CMS 3000 e Intranet 3002. Os processos de validação foram encerrados ao final de cada verificação." },
+    { "criterion": "AC-03", "status": "passed", "evidence": "pnpm --filter api list --depth -1, pnpm --filter cms list --depth -1 e pnpm --filter intranet list --depth -1 retornaram individualmente api, cms e intranet." }
+  ],
+  "follow_ups": [
+    "A task não define testes automatizados para os apps; criar cobertura de testes em task futura.",
+    "O repositório ainda não possui .gitignore; uma task deve adicionar exclusões para node_modules, caches e saídas de build antes do uso contínuo dos apps. .gitignore está fora do escopo permitido de FOUND-002."
+  ],
+  "notes": [
+    "Os scripts test informam que ainda não existem testes configurados, sem simular cobertura automatizada.",
+    "O Next 16 gerou AGENTS.md e CLAUDE.md nos dois apps Next durante dev, com instruções que deverão ser consideradas em alterações futuras.",
+    "node_modules, caches e saídas de build foram removidos após as validações; pnpm-lock.yaml foi mantido.",
+    "Nenhuma documentação de produto foi alterada nesta etapa; a etapa documental aguarda aprovação da implementação."
+  ]
+}
