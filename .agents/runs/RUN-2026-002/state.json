@@ -1,10 +1,14 @@
 {
   "run_id": "RUN-2026-002",
-  "status": "waiting_review",
+  "status": "running",
   "current_task": "FOUND-002",
   "attempt": 1,
   "max_attempts": 3,
   "started_at": "2026-09-29T02:32:00Z",
-  "updated_at": "2026-09-29T03:36:39Z",
-  "last_review": null
+  "updated_at": "2026-09-29T03:58:57Z",
+  "last_review": {
+    "decision": "rejected",
+    "attempt": 1,
+    "reviewed_at": "2026-09-29T03:58:57Z"
+  }
 }

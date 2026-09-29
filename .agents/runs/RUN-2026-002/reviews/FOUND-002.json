@@ -1,0 +1,35 @@
+{
+  "task": "FOUND-002",
+  "attempt": 1,
+  "decision": "rejected",
+  "criteria": [
+    {
+      "id": "AC-01",
+      "status": "passed",
+      "reason": "Os manifestos dos três apps têm os nomes exigidos e declaram @nestjs/core para api e next para cms e intranet. O lockfile inclui os quatro workspaces."
+    },
+    {
+      "id": "AC-02",
+      "status": "passed",
+      "reason": "A evidência registra startup isolado com resposta HTTP 200 nos três endereços, e os scripts/portas correspondem ao código revisado."
+    },
+    {
+      "id": "AC-03",
+      "status": "passed",
+      "reason": "Os nomes de pacote são api, cms e intranet; a evidência registra que pnpm --filter seleciona cada workspace individualmente."
+    }
+  ],
+  "issues": [
+    {
+      "severity": "blocking",
+      "file": "apps/cms/app/globals.css",
+      "description": "A folha adiciona cores literais (#1f2937 e #f9fafb). AGENTS.md exige evitar cores hardcoded quando há tokens semânticos equivalentes, e docs/DESIGN_SYSTEM.md define --color-text-primary e --color-background. Como estes são scaffolds sem interface de produto, as cores personalizadas devem aguardar a aplicação dos tokens do Design System. A mesma alteração existe em apps/intranet/app/globals.css."
+    },
+    {
+      "severity": "major",
+      "file": "apps/api/package.json",
+      "description": "Os scripts test dos três apps apenas imprimem que não há testes e retornam sucesso; portanto pnpm test não executa testes. Isso está declarado na evidência e no README, e testes não são critério bloqueante desta task, mas a validação não deve ser interpretada como cobertura de testes. Registrar cobertura como follow_up."
+    }
+  ],
+  "summary": "AC-01, AC-02 e AC-03 passaram. A revisão rejeita a implementação devido ao uso de cores hardcoded nos dois apps Next, contrariando a regra de design aplicável. Também registra que pnpm test é apenas um placeholder. Os builds, lint, typecheck e inicializações HTTP descritos na evidência foram revisados; o reviewer não alterou código nem backlog."
+}
