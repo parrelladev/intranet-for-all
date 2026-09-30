@@ -1,0 +1,88 @@
+{
+  "task": "FOUND-002",
+  "attempt": 2,
+  "status": "implemented",
+  "changes": [
+    {
+      "file": "apps/cms/app/globals.css",
+      "reason": "Removidas as cores literais de texto e fundo; o scaffold usa as cores padrão do navegador até os tokens do Design System serem implementados."
+    },
+    {
+      "file": "apps/intranet/app/globals.css",
+      "reason": "Removidas as cores literais de texto e fundo; o scaffold usa as cores padrão do navegador até os tokens do Design System serem implementados."
+    },
+    {
+      "file": ".agents/runs/RUN-2026-002/evidence/FOUND-002-attempt-2.json",
+      "reason": "Registrada a evidência do rework e das validações da tentativa 2."
+    }
+  ],
+  "tests": [
+    {
+      "command": "corepack pnpm install",
+      "status": "passed",
+      "details": "Instalação reproduzida a partir do lockfile usando pnpm 10.15.1."
+    },
+    {
+      "command": "corepack pnpm lint",
+      "status": "passed",
+      "details": "ESLint passou nos três workspaces."
+    },
+    {
+      "command": "corepack pnpm typecheck",
+      "status": "passed",
+      "details": "TypeScript passou nos três workspaces."
+    },
+    {
+      "command": "corepack pnpm test",
+      "status": "passed",
+      "details": "Os comandos dos três workspaces concluíram, mas não executam testes; apenas informam que ainda não há testes configurados."
+    },
+    {
+      "command": "corepack pnpm build",
+      "status": "passed",
+      "details": "Nest compilou a API e Next gerou os builds do CMS e da Intranet."
+    },
+    {
+      "command": "corepack pnpm --filter api dev",
+      "status": "passed",
+      "details": "Inicialização isolada respondeu HTTP 200 em http://localhost:3001."
+    },
+    {
+      "command": "corepack pnpm --filter cms dev",
+      "status": "passed",
+      "details": "Inicialização isolada respondeu HTTP 200 em http://localhost:3000."
+    },
+    {
+      "command": "corepack pnpm --filter intranet dev",
+      "status": "passed",
+      "details": "Inicialização isolada respondeu HTTP 200 em http://localhost:3002."
+    }
+  ],
+  "acceptance_evidence": [
+    {
+      "criterion": "AC-01",
+      "status": "passed",
+      "evidence": "Os manifestos dos três workspaces continuam declarando os nomes api, cms e intranet e seus frameworks NestJS, Next.js e Next.js; pnpm install reconheceu os workspaces."
+    },
+    {
+      "criterion": "AC-02",
+      "status": "passed",
+      "evidence": "Os três comandos filtrados iniciaram isoladamente e responderam HTTP 200 nas portas documentadas."
+    },
+    {
+      "criterion": "AC-03",
+      "status": "passed",
+      "evidence": "Os três pacotes permanecem selecionáveis individualmente pelos filtros api, cms e intranet do pnpm, comprovado também na tentativa 1."
+    }
+  ],
+  "follow_ups": [
+    "A task não define testes automatizados para os apps; criar cobertura de testes em task futura.",
+    "Adicionar .gitignore para node_modules, caches e saídas de build em task futura; .gitignore está fora do escopo permitido de FOUND-002."
+  ],
+  "notes": [
+    "O rework removeu somente declarações de cor personalizadas dos dois CSS globais; nenhum token semântico foi inventado antes de sua implementação.",
+    "O guia local do Next sobre CSS global foi lido antes da alteração.",
+    "pnpm-lock.yaml não foi alterado nesta tentativa.",
+    "Os scripts test não representam cobertura de testes."
+  ]
+}
